@@ -1,9 +1,6 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: railsdb
-  username: postgres
-  password: P@55w0rd
   pool: 5
 
 development:
@@ -12,8 +9,8 @@ development:
 
 production:
   <<: *default
-  database: railsdb
-
+  url: <%= ENV['DATABASE_URL'] %>
+  database: <%= ENV['PGDATABASE'] %>
 
 test:
   <<: *default
